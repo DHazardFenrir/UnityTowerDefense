@@ -19,7 +19,7 @@ MonoBehaviour:
     types:
     - {fileID: 11400000, guid: 10b2c37200579e141b074f70a14cd1d2, type: 2}
   towerName: Basic
-  sprite: {fileID: 0}
+  sprite: {fileID: 10913, guid: 0000000000000000f000000000000000, type: 0}
   prefab: {fileID: 0}
   evolutions:
   - cost: 50

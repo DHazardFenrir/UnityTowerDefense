@@ -36,6 +36,7 @@ public class Enemy : MonoBehaviour, IDamageable
         {
             Debug.LogWarning("Enemy is not in a valid Node.");
         }
+        currentHP = startHP;
         
     }
 
