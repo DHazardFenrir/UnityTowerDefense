@@ -40,7 +40,7 @@ public class Tower : MonoBehaviour
             head.transform.LookAt(currentEnemy.transform);
             for (int i=0; i< data.baseStats.types.Length; i++)
             {
-                if (Time.time > timeOfLastAttack + timeBetweenAttacks && currentEnemy.Equals(data.baseStats.types[i]))
+                if (Time.time > timeOfLastAttack + timeBetweenAttacks)
                 Attack();
                
                     
@@ -52,6 +52,17 @@ public class Tower : MonoBehaviour
       
     }
 
+    public TowerData GetData()
+    {
+        return data;
+    }
+    public Tower Evolve(Evolution evolution)
+    {
+        GameObject newTowerObject = Instantiate(evolution.tower.prefab, this.transform.position, this.transform.rotation);
+        Tower newTower = newTowerObject.GetComponent<Tower>();
+        Destroy(this.gameObject);
+        return newTower;
+    }
     private void Attack()
     {
         GameObject bulletObject=Instantiate(bulletPrefab, bulletOrigin.position, bulletOrigin.rotation);

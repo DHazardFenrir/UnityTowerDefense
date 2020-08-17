@@ -1,0 +1,48 @@
+﻿using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class PlayerMouseInput : MonoBehaviour
+{
+    [SerializeField] LayerMask gridLayerMask = default;
+    private Camera cachedCamera;
+
+    [SerializeField] Shop shop = default;
+    private void Start()
+    {
+        cachedCamera = Camera.main;
+    }
+    private void Update()
+    {
+        if (Input.GetMouseButton(0))
+        {
+            RaycastHit hit;
+            Ray ray = cachedCamera.ScreenPointToRay(Input.mousePosition);
+            Debug.DrawRay(ray.origin, ray.direction * 10f, Color.red);
+
+            if(Physics.Raycast(ray, out hit, 100f, gridLayerMask))
+            {
+                GameNode node = hit.collider.GetComponent<GameNode>();
+                if(node!= null)
+                {
+                    if (!node.IsEmpty)
+                    {
+                        shop.OpenShop(node);
+                    }
+                    else
+                    {
+                        shop.Clean();
+                    }
+                }
+                else
+                {
+                    shop.Clean();
+                }
+            }
+            else
+            {
+                shop.Clean();
+            }
+        }
+    }
+}

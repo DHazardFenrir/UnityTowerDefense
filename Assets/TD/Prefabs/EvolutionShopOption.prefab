@@ -293,6 +293,7 @@ MonoBehaviour:
   evolutionImage: {fileID: 5610407892346090024}
   evolutionNameLabel: {fileID: 1232565578026771156}
   costLabel: {fileID: 7387544372171361840}
+  button: {fileID: 7225682314380817943}
 --- !u!1 &4671254073315673935
 GameObject:
   m_ObjectHideFlags: 0

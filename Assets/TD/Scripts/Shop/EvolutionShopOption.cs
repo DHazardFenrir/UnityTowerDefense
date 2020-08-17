@@ -9,11 +9,22 @@ public class EvolutionShopOption : MonoBehaviour
     [SerializeField] Image evolutionImage = default;
     [SerializeField] TMP_Text evolutionNameLabel = default;
     [SerializeField] TMP_Text costLabel = default;
+    [SerializeField] Button button = default;
 
-    public void Init(Evolution evolution)
+    private Evolution evolution;
+    private Shop shop;
+    public void Init(Evolution evolution, Shop shop)
     {
+        this.evolution = evolution;
+        this.shop = shop;
         evolutionImage.sprite = evolution.tower.sprite;
         evolutionNameLabel.text = evolution.tower.name;
         costLabel.text = "Cost: " + evolution.cost.ToString();
+        button.onClick.AddListener(OptionClick);
+    }
+
+    private void OptionClick()
+    {
+        shop.TryBuyEvolutionInCurrentTower(evolution);
     }
 }

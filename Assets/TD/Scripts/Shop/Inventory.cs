@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class Inventory : MonoBehaviour
 {
-    private int currentGold;
+    public int CurrentGold { get; private set; }
     public event Action<int> onGoldAmountChanged;
 
     private void Start()
@@ -14,7 +14,13 @@ public class Inventory : MonoBehaviour
     }
     public void AddGold(int amount)
     {
-        currentGold += amount;
-        onGoldAmountChanged?.Invoke(currentGold);
+        CurrentGold += amount;
+        onGoldAmountChanged?.Invoke(CurrentGold);
+    }
+    
+    public void ReduceGold(int amount)
+    {
+        CurrentGold -= amount;
+        onGoldAmountChanged?.Invoke(CurrentGold);
     }
 }

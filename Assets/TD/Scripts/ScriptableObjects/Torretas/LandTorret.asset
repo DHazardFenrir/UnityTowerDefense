@@ -20,5 +20,5 @@ MonoBehaviour:
     - {fileID: 0}
   towerName: Basic
   sprite: {fileID: 10911, guid: 0000000000000000f000000000000000, type: 0}
-  prefab: {fileID: 0}
+  prefab: {fileID: 8309698293623535841, guid: f4f81898832e6264780f257744441ddc, type: 3}
   evolutions: []
