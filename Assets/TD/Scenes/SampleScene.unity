@@ -1707,6 +1707,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 42ee5b9dcd09a7e45a19e50b6327720b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  statusValue: {fileID: 11400000, guid: 0fd1c0a465a2e854cb7db3af228d9375, type: 2}
   currentTowerImage: {fileID: 776572396}
   evolutionsParent: {fileID: 667481882}
   evolutionPrefab: {fileID: 3146999888693139308, guid: c1079a53c2b141d4788bc5fd9f220e08,
@@ -1714,6 +1715,7 @@ MonoBehaviour:
   inventory: {fileID: 54177993}
   basicTowerShop: {fileID: 1715168093}
   selectedTowerShop: {fileID: 1358202930}
+  towerPlaceHolderPrefab: {fileID: 0}
 --- !u!1 &389707983
 GameObject:
   m_ObjectHideFlags: 0
@@ -4500,7 +4502,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 12
+  m_RootOrder: 13
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1080411489
 PrefabInstance:

@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 public class PlayerMouseInput : MonoBehaviour
 {
@@ -16,6 +17,7 @@ public class PlayerMouseInput : MonoBehaviour
     {
         if (Input.GetMouseButton(0))
         {
+            bool isOverUi = EventSystem.current.IsPointerOverGameObject();
             RaycastHit hit;
             Ray ray = cachedCamera.ScreenPointToRay(Input.mousePosition);
             Debug.DrawRay(ray.origin, ray.direction * 10f, Color.red);
@@ -29,17 +31,17 @@ public class PlayerMouseInput : MonoBehaviour
                     {
                         shop.OpenShop(node);
                     }
-                    else
+                    else if(!isOverUi)
                     {
                         shop.Clean();
                     }
                 }
-                else
+                else if(!isOverUi)
                 {
                     shop.Clean();
                 }
             }
-            else
+            else if (!isOverUi)
             {
                 shop.Clean();
             }
