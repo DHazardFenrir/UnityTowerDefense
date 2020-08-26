@@ -11,6 +11,7 @@ public class Enemy : MonoBehaviour, IDamageable
     private IMovable movable;
     private int currentHP;
     [SerializeField] int rewardGold = 10;
+    [SerializeField] int attack = 10;
 
     [SerializeField] int startHP = 100;
     
@@ -53,5 +54,14 @@ public class Enemy : MonoBehaviour, IDamageable
     {
         Destroy(this.gameObject);
         FindObjectOfType<Inventory>().AddGold(rewardGold); //Cambiar por otro metodo despues.
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        PlayerBase playerBase = other.GetComponent<PlayerBase>();
+        if(playerBase != null)
+        {
+            playerBase.Damage(attack);
+        }
     }
 }

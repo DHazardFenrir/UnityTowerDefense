@@ -189,9 +189,9 @@ CapsuleCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   m_Radius: 0.5
-  m_Height: 2
+  m_Height: 7.2
   m_Direction: 1
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Center: {x: 0, y: -2.38, z: 0}
 --- !u!114 &4047447462416230243
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -206,6 +206,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   type: {fileID: 11400000, guid: 5713293011e134c44b9002c9c88853d8, type: 2}
   rewardGold: 10
+  attack: 10
   startHP: 30
 --- !u!114 &8076904147838510902
 MonoBehaviour:

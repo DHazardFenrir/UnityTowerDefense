@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using XP.Pathfinding;
 
-public class Spawner : MonoBehaviour, ISpawner
+public class WaveSpawner : MonoBehaviour, ISpawner
 {
     [SerializeField] Wave[] waves;
     private Transform target = default;
@@ -16,8 +16,9 @@ public class Spawner : MonoBehaviour, ISpawner
 
   
 
-    public void StartSpawn(Transform target)
+    public void StartSpawn()
     {
+        target = FindObjectOfType<PlayerBase>().transform;
         //Find Grid Manager
         gridManager = FindObjectOfType<GridManager>();
 
@@ -39,7 +40,16 @@ public class Spawner : MonoBehaviour, ISpawner
 
     IEnumerator SpawningRoutine()
     {
-        yield return null;
+       
+        for(int i =0; i< waves.Length; i++)
+        {
+          for(int j =0; j < waves[i].enemies.Length; j++)
+            {
+                Spawn(waves[i].enemies[j].prefab);
+                yield return new WaitForSeconds(spawnRate);
+            }
+            yield return new WaitForSeconds(waveDelay);
+        }
     }
 
     private void Spawn(GameObject prefab)

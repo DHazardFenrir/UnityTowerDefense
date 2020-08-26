@@ -5,5 +5,5 @@ using UnityEngine;
 
 public interface ISpawner 
 {
-    void StartSpawn(Transform target);
+    void StartSpawn();
 }

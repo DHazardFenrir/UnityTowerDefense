@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using XP.Pathfinding;
@@ -11,10 +12,12 @@ public class LinealMovement : MonoBehaviour , IMovable
     int actualNodeIndex;
 
     Vector3 direction;
+   
 
     public void SetPath(Node[] path)
     {
         this.path = path;
+  
         actualNodeIndex = 0;
         transform.position = path[0].transform.position;
     }
@@ -45,6 +48,7 @@ public class LinealMovement : MonoBehaviour , IMovable
         if (actualNodeIndex >= path.Length - 1)
         {
             Destroy(this.gameObject);
+          
             return;
         }
     }

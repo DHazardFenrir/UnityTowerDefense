@@ -111,6 +111,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   type: {fileID: 11400000, guid: 10b2c37200579e141b074f70a14cd1d2, type: 2}
   rewardGold: 10
+  attack: 10
   startHP: 30
 --- !u!114 &-4294961881547436479
 MonoBehaviour:

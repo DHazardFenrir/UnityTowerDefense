@@ -23,4 +23,10 @@ public class Inventory : MonoBehaviour
         CurrentGold -= amount;
         onGoldAmountChanged?.Invoke(CurrentGold);
     }
+
+    [ContextMenu("Add 100 Gold")]
+    public void Test_AddGold()
+    {
+        AddGold(100);
+    }
 }
