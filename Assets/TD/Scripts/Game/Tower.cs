@@ -12,6 +12,7 @@ public class Tower : MonoBehaviour
     [SerializeField] Transform bulletOrigin = default;
     [SerializeField] TowerData data = default;
     private bool canAttack;
+ 
   
   
 
@@ -28,6 +29,7 @@ public class Tower : MonoBehaviour
     public void StartAttack()
     {
         canAttack = true;
+        Debug.Log("Pikachu");
     }
     private void Update()
     {
@@ -65,7 +67,7 @@ public class Tower : MonoBehaviour
     }
     private void Attack()
     {
-        GameObject bulletObject=Instantiate(bulletPrefab, bulletOrigin.position, bulletOrigin.rotation);
+        GameObject bulletObject =  PoolManager.Instance.RequestBullet(bulletOrigin.transform.position, bulletOrigin.transform.rotation);
       
         Bullet bullet = bulletObject.GetComponent<Bullet>();
         

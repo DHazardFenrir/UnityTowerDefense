@@ -22,5 +22,6 @@ public class GameEventListener : MonoBehaviour
     public void RaiseEvent()
     {
         response?.Invoke();
+        Debug.Log("Holi");
     }
 }

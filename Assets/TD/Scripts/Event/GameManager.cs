@@ -12,6 +12,7 @@ public class GameManager : MonoBehaviour
     public void StartGame()
     {
         onGameStart.Raise();
+        Debug.Log("Estoy iniciando");
     }
 
     [ContextMenu("Game Over")]
