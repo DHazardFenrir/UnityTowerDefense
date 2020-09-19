@@ -67,11 +67,11 @@ public class Tower : MonoBehaviour
     }
     private void Attack()
     {
-        GameObject bulletObject =  PoolManager.Instance.RequestBullet(bulletOrigin.transform.position, bulletOrigin.transform.rotation);
+        GameObject bulletObject =  PoolManager.Instance.RequestObject(bulletPrefab,bulletOrigin.transform.position, bulletOrigin.transform.rotation);
       
         Bullet bullet = bulletObject.GetComponent<Bullet>();
         
-        bullet.Init(data.baseStats.damage);
+        bullet.Init(data.baseStats.damage, bulletPrefab);
         timeOfLastAttack= Time.time;
        
     }

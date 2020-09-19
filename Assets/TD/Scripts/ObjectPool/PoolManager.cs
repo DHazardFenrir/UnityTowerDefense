@@ -1,33 +1,48 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Diagnostics;
 using UnityEngine;
+
 
 public class PoolManager : MonoBehaviour
 {
-    [SerializeField] GameObject bulletPrefab = default;
-    private ObjPool bulletPool;
+   
+  
 
+    private Dictionary<GameObject, ObjPool> pools;
     public static PoolManager Instance { get; private set; }
 
     private void Awake()
     {
+        pools = new Dictionary<GameObject, ObjPool>();
         if(Instance == null)
         {
             Instance = this;
         }
     }
-    private void Start()
+    
+   
+    ////Generic Methods/////
+    
+    public GameObject RequestObject (GameObject originalPrefab, Vector3 position, Quaternion rotation)
     {
-        bulletPool = new ObjPool(bulletPrefab);
+        if (!pools.ContainsKey(originalPrefab))
+        {
+            ObjPool newPool = new ObjPool(originalPrefab);
+            pools.Add(originalPrefab, newPool);
+        }
+        ObjPool pool = pools[originalPrefab];
+        return  pool.GetObjFromPool(position, rotation);
     }
 
-    public GameObject RequestBullet(Vector3 position,Quaternion rotation)
+    public void StoreObj(GameObject originalPrefab, GameObject obj)
     {
-        return bulletPool.GetObjFromPool(position, rotation);
-    }
-
-    public void StoreBullet (GameObject bullet)
-    {
-        bulletPool.ReturnObjToPool(bullet);
+        if (!pools.ContainsKey(originalPrefab))
+        {
+            ObjPool newPool = new ObjPool(originalPrefab);
+            pools.Add(originalPrefab, newPool);
+        }
+        ObjPool pool = pools[originalPrefab];
+        pool.ReturnObjToPool(obj);
     }
 }

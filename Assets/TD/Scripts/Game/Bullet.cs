@@ -7,6 +7,8 @@ public class Bullet : MonoBehaviour
     [SerializeField] float speed = 10f;
     Rigidbody rb;
     private int damage;
+    private GameObject originalPrefab;
+    private Coroutine coroutine;
  
     void Awake()
     {
@@ -21,19 +23,25 @@ public class Bullet : MonoBehaviour
         if(enemy != null)
         {
             enemy.Damage(damage);
-            PoolManager.Instance.StoreBullet(this.gameObject);
+            PoolManager.Instance.StoreObj(originalPrefab,this.gameObject);
+            StopCoroutine(coroutine);
         }
     }
 
-    public void Init(int damage)
+    public void Init(int damage, GameObject originalPrefab)
     {
+        this.originalPrefab = originalPrefab;
         this.damage = damage;
         rb.velocity = transform.forward * speed;
-        Invoke("StoreOnPool", 5f);
+        //Invoke("StoreOnPool", 5f);
+        coroutine = StartCoroutine(StoreOnPoolCoroutine());
     }
 
-    private void StoreOnPool()
+ 
+
+    private IEnumerator StoreOnPoolCoroutine()
     {
-        PoolManager.Instance.StoreBullet(this.gameObject);
+        yield return new WaitForSeconds(5f);
+        PoolManager.Instance.StoreObj(originalPrefab, this.gameObject);
     }
 }

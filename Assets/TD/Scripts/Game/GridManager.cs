@@ -86,4 +86,8 @@ public class GridManager : MonoBehaviour
 
     }
 
+    public Node[][]  GetGridNodes()
+    {
+        return grid;
+    }
 }
