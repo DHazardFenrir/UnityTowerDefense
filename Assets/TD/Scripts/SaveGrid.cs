@@ -7,12 +7,13 @@ using XP.Pathfinding;
 
 public class SaveGrid : MonoBehaviour
 {
-    [SerializeField] TextAsset file = default;
-    private GridManager gridManager;
+   
+    [SerializeField] GridManager gridManager;
 
     void Start()
     {
-        
+        CreatingAndSavingGrid();
+       
     }
 
     // Update is called once per frame
@@ -23,14 +24,15 @@ public class SaveGrid : MonoBehaviour
 
     void CreatingAndSavingGrid()
     {
+       
         string filename = "grid.save";
         string saveDirectoryName = "saves";
         string saveDirectoryPath = Path.Combine(Application.persistentDataPath, saveDirectoryName);
         string filePath = Path.Combine(saveDirectoryPath, filename);
         string saveData = "saved grid for the level";
-        string Ex;
-        string zero;
-        string[] dataMatrix = new string[] { };
+       
+        
+        
       
 
         if (!Directory.Exists(Path.Combine(saveDirectoryPath)))
@@ -39,35 +41,46 @@ public class SaveGrid : MonoBehaviour
         }
 
         Node[][] grid = gridManager.GetGridNodes();
-       
-        for(int i = 0; i < grid.Length; i++)
+        string[] tempString = new string[grid.Length];
+
+
+        for (int i = 0; i < grid.Length; i++)
         {
-           for(int j = 0; j < grid[i].Length; j++)
+            
+            for (int j = 0; j < grid[i].Length; j++)
             {
-                if(grid[i][j].IsVisitable)
+               
+                if (grid[i][j].IsVisitable)
                 {
                     Debug.Log("o");
-                    Ex = grid[i][j].ToString();
-                    Ex = "o";
-                    
-                    for (int k =0; k < dataMatrix.Length; k++)
-                    {
-                        dataMatrix[k] = Ex;
-                    }
                    
+                    tempString[i] += "o";
+
+
+
+
+
+
+
+
+
+
                 }
                 else
                 {
                     Debug.Log("x");
-                    zero = grid[i][j].ToString();
-                    zero = "x";
-                    for (int k = 0; k < dataMatrix.Length; k++)
-                    {
-                        dataMatrix[k] = zero;
-                    }
+                   
+                    tempString[i] += "x";
+
                 }
+
+
             }
         }
+        
+        Debug.Log("Save was saved in: " + filePath + saveData);
+        File.WriteAllLines(filePath, tempString);
+
 
     }
 }
