@@ -11,6 +11,7 @@ public class TowerData : ScriptableObject
     public Sprite sprite;
     public GameObject prefab;
     public Evolution[] evolutions;
+    
 }
 
 [System.Serializable]
@@ -20,6 +21,7 @@ public struct TowerBaseStats
     public float attackSpeed;
     public float range;
     public EnemyType[] types;
+    public int TorretNumber;
 }
 
 [System.Serializable]

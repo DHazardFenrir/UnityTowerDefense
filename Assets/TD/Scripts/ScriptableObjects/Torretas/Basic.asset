@@ -18,6 +18,7 @@ MonoBehaviour:
     range: 2
     types:
     - {fileID: 11400000, guid: 10b2c37200579e141b074f70a14cd1d2, type: 2}
+    TorretNumber: 1
   towerName: Basic
   sprite: {fileID: 10913, guid: 0000000000000000f000000000000000, type: 0}
   prefab: {fileID: 1183470260777595105, guid: eb6274d1224501d4ab8a8777eafe6b85, type: 3}

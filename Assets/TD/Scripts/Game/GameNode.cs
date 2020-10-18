@@ -20,4 +20,29 @@ public class GameNode : MonoBehaviour
         Tower = tower;
 
     } 
+
+    public Tower getTower()
+    {
+        return Tower;
+    }
+
+    //public void GetPlayerBase()
+    //{
+    //    PlayerBase playerbase = FindObjectOfType<PlayerBase>();
+    //    Vector3 position = playerbase.transform.position;
+    //    int x = Mathf.RoundToInt(position.x);
+    //    int z = Mathf.RoundToInt(position.z);
+
+
+    //}
+
+    //public void GetEnemyBase()
+    //{
+    //   WaveSpawner enemyBase = FindObjectOfType<WaveSpawner>();
+    //    Vector3 position = enemyBase.transform.position;
+    //    int x = Mathf.RoundToInt(position.x);
+    //    int z = Mathf.RoundToInt(position.z);
+
+
+    //}
 }

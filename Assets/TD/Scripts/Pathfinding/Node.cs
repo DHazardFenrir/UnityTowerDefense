@@ -18,5 +18,10 @@ namespace XP.Pathfinding
         {
             this.neighbors = neighbors;
         }
+
+        public void NoVisitable()
+        {
+            isVisitable = false;
+        }
     }
 }
